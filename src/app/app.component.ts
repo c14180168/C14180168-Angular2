@@ -1,5 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalvarService } from './globalvar.service';
 
 @Component({
   selector: 'my-app',
@@ -8,20 +9,26 @@ import { Router } from '@angular/router';
 })
 export class AppComponent  {
   constructor(
-    private router: Router
-  ) {}
+    private router: Router,
+    public globalvar: GlobalvarService
+  ) {this.list = this.globalvar.getList}
 
+  judul = ""
+  isi = ""
   name = 'Angular ' + VERSION.major;
-
+  
+  list
   notes = []
 
   save(){
+    let today = new Date()
     let note = {
-      judul:"a",
-      isi:"a",
-      tgl:"a"
+      judul: this.judul,
+      isi: this.isi,
+      tgl: today.getDate
     }
-    this.notes.push(note)
+    this.list.push(note)
+    alert(note)
   }
   hal2(){
     this.router.navigate(["/det-notes"])
