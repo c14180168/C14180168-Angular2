@@ -13,8 +13,15 @@ export class AppComponent  {
 
   name = 'Angular ' + VERSION.major;
 
-  save(){
+  notes = []
 
+  save(){
+    let note = {
+      judul:"a",
+      isi:"a",
+      tgl:"a"
+    }
+    this.notes.push(note)
   }
   hal2(){
     this.router.navigate(["/det-notes"])

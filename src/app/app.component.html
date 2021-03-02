@@ -10,4 +10,8 @@
 <button (click)="hal2()">View Notes</button>
 <button (click)="hal3()">Favorite</button><br>
 
+<div *ngFor="let isi in notes">
+  {{isi.nama}}
+</div>
+
 <router-outlet></router-outlet>
